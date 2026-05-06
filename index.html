@@ -80,9 +80,17 @@
   }
 
   /* start tiny (almost invisible), grow as they rise. transform-only. */
+  /* zig-zag horizontally while rising. each bubble's --dx flips sign and
+     magnitude through the keyframes so trajectories aren't straight lines.
+     scale grows monotonically from .05 to 12. */
   @keyframes rise {
-    from { transform: translate3d(0, 0, 0) scale(.05); }
-    to   { transform: translate3d(calc(var(--dx, 0vw) * 3.5), -50vh, 0) scale(12); }
+    0%   { transform: translate3d(0, 0, 0) scale(.05); }
+    18%  { transform: translate3d(calc(var(--dx, 0vw) *  1.2), -9vh,  0) scale(1.8); }
+    34%  { transform: translate3d(calc(var(--dx, 0vw) * -1.6), -18vh, 0) scale(3.6); }
+    52%  { transform: translate3d(calc(var(--dx, 0vw) *  2.4), -27vh, 0) scale(5.8); }
+    70%  { transform: translate3d(calc(var(--dx, 0vw) * -2.6), -36vh, 0) scale(8.2); }
+    86%  { transform: translate3d(calc(var(--dx, 0vw) *  3.2), -44vh, 0) scale(10.5); }
+    100% { transform: translate3d(calc(var(--dx, 0vw) * -3.5), -50vh, 0) scale(12); }
   }
 
   @media (prefers-reduced-motion: reduce) {
