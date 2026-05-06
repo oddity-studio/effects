@@ -32,14 +32,18 @@
   .fire-bg {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-      to top,
+    /* radial instead of linear: an ellipse centered at the bottom-middle
+       so the fire's upper edge bows like a horizon - taller in the
+       center, shorter at the sides. stop percentages mirror the previous
+       linear values (each /33 to map into the ellipse's 0-100 range). */
+    background: radial-gradient(
+      ellipse 90% 33% at 50% 100%,
       #ffffff 0%,
-      #fff2a8 3%,
-      #ffb22a 7%,
-      #c43000 20%,
-      #a10000 24%,
-      #000000 33%
+      #fff2a8 9%,
+      #ffb22a 21%,
+      #c43000 60%,
+      #a10000 73%,
+      #000000 100%
     );
     transform-origin: 50% 100%;
     will-change: transform;
