@@ -65,6 +65,15 @@
     100% { transform: scaleY(1.00); }
   }
 
+  /* one blur pass on the whole layer is much cheaper than blurring each
+     of the 225 particles individually. */
+  .bubbles {
+    position: absolute;
+    inset: 0;
+    filter: blur(6px);
+    will-change: filter;
+  }
+
   .bubble {
     position: absolute;
     bottom: -10vh;
@@ -102,6 +111,7 @@
 <body>
   <div class="stage" aria-hidden="true">
     <div class="fire-bg"></div>
+    <div class="bubbles">
     <div class="bubble" style="--x:1%;  --size:8px;  --dx:-2vw; --dur:3.7s; --delay:-0.2s"></div>
     <div class="bubble" style="--x:3%;  --size:12px; --dx: 1vw; --dur:4.3s; --delay:-2.1s"></div>
     <div class="bubble" style="--x:5%;  --size:6px;  --dx:-3vw; --dur:3.3s; --delay:-3.7s"></div>
@@ -327,6 +337,7 @@
     <div class="bubble" style="--x:79%; --size:4px;  --dx:-2vw; --dur:2.9s; --delay:-4.3s"></div>
     <div class="bubble" style="--x:87%; --size:4px;  --dx: 2vw; --dur:3.4s; --delay:-5.9s"></div>
     <div class="bubble" style="--x:95%; --size:4px;  --dx:-3vw; --dur:3.0s; --delay:-2.9s"></div>
+    </div>
   </div>
 </body>
 </html>
