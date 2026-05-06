@@ -9,8 +9,17 @@
   html, body {
     margin: 0;
     height: 100%;
-    background: #000;
     overflow: hidden;
+  }
+  body {
+    /* near-black with a subtle dotted texture so bubble "holes" reveal
+       a faintly patterned dark surface instead of a flat black void. */
+    background-color: #050505;
+    background-image:
+      radial-gradient(rgba(255,255,255,.035) 1px, transparent 1.2px),
+      radial-gradient(rgba(255,255,255,.02)  1px, transparent 1.2px);
+    background-size: 6px 6px, 11px 11px;
+    background-position: 0 0, 3px 4px;
   }
 
   .stage {
