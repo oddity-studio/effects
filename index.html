@@ -49,7 +49,7 @@
   /* start tiny (almost invisible), grow as they rise. transform-only. */
   @keyframes rise {
     from { transform: translate3d(0, 0, 0) scale(.05); }
-    to   { transform: translate3d(var(--dx, 0vw), -50vh, 0) scale(5); }
+    to   { transform: translate3d(calc(var(--dx, 0vw) * 3.5), -50vh, 0) scale(8); }
   }
 
   @media (prefers-reduced-motion: reduce) {
