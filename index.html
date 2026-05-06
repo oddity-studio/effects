@@ -18,20 +18,9 @@
     inset: 0;
     pointer-events: none;
     contain: strict;
-    /* solid backdrop + isolate so mix-blend-mode multiplies against the
-       particles + black, not against the transparent page underneath. */
-    background: #000;
-    isolation: isolate;
-  }
-
-  /* one static gradient layer multiplies onto the white particles, tinting
-     them by vertical position: white -> yellow -> red -> black (= invisible).
-     this means each particle only animates `transform`, never paints. */
-  .stage::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
+    /* the fire gradient lives on the stage itself. bubbles painted on top
+       in black "punch holes" through it (since the body underneath is also
+       black, the visual result is the gradient being cut away). */
     background: linear-gradient(
       to top,
       #ffffff 0%,
@@ -41,7 +30,6 @@
       #3a0000 60%,
       #000000 72%
     );
-    mix-blend-mode: multiply;
   }
 
   .bubble {
@@ -52,16 +40,16 @@
     height: var(--size, 10px);
     margin-left: calc(var(--size, 10px) / -2);
     border-radius: 50%;
-    background: #fff;
+    background: #000;
     will-change: transform;
     animation: rise var(--dur, 4s) linear infinite;
     animation-delay: var(--delay, 0s);
   }
 
-  /* GPU-only: just transform. no color, no opacity, no paint per frame. */
+  /* start tiny (almost invisible), grow as they rise. transform-only. */
   @keyframes rise {
-    from { transform: translate3d(0, 0, 0) scale(3.45); }
-    to   { transform: translate3d(var(--dx, 0vw), -75vh, 0) scale(.1); }
+    from { transform: translate3d(0, 0, 0) scale(.05); }
+    to   { transform: translate3d(var(--dx, 0vw), -75vh, 0) scale(3.5); }
   }
 
   @media (prefers-reduced-motion: reduce) {
