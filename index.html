@@ -43,32 +43,61 @@
     );
     transform-origin: 50% 100%;
     will-change: transform;
-    animation: bob 4.6s linear infinite;
+    animation: bob 13.7s linear infinite;
   }
 
-  /* dense, irregular stops + non-prime spacing to look chaotic. +/- 20%. */
+  /* longer cycle so we can sprinkle "held peaks" among the chaotic
+     jitter. roughly every third peak the value lingers for a beat
+     (two adjacent stops share the same scaleY) before falling - the
+     irregular timing fakes randomness. amplitude still within +/- 20%. */
   @keyframes bob {
     0%   { transform: scaleY(1.00); }
-    4%   { transform: scaleY(1.14); }
-    9%   { transform: scaleY(.87); }
-    13%  { transform: scaleY(1.18); }
-    19%  { transform: scaleY(.83); }
-    24%  { transform: scaleY(1.05); }
-    29%  { transform: scaleY(.91); }
-    33%  { transform: scaleY(1.19); }
-    38%  { transform: scaleY(.84); }
-    43%  { transform: scaleY(1.12); }
-    48%  { transform: scaleY(.88); }
-    53%  { transform: scaleY(1.17); }
-    58%  { transform: scaleY(.82); }
-    63%  { transform: scaleY(1.07); }
-    68%  { transform: scaleY(.93); }
-    73%  { transform: scaleY(1.16); }
-    78%  { transform: scaleY(.85); }
-    83%  { transform: scaleY(1.10); }
-    88%  { transform: scaleY(.89); }
-    93%  { transform: scaleY(1.13); }
-    97%  { transform: scaleY(.86); }
+    /* fast jitter */
+    2%   { transform: scaleY(1.14); }
+    4%   { transform: scaleY(.87);  }
+    6%   { transform: scaleY(1.18); }
+    8%   { transform: scaleY(.83);  }
+    11%  { transform: scaleY(1.05); }
+    13%  { transform: scaleY(.91);  }
+    /* held peak #1 */
+    16%  { transform: scaleY(1.19); }
+    20%  { transform: scaleY(1.19); }
+    /* fast jitter */
+    23%  { transform: scaleY(.84);  }
+    25%  { transform: scaleY(1.12); }
+    27%  { transform: scaleY(.88);  }
+    29%  { transform: scaleY(1.07); }
+    32%  { transform: scaleY(.93);  }
+    34%  { transform: scaleY(1.16); }
+    36%  { transform: scaleY(.85);  }
+    39%  { transform: scaleY(1.10); }
+    41%  { transform: scaleY(.89);  }
+    /* held peak #2 (low) */
+    44%  { transform: scaleY(.82);  }
+    49%  { transform: scaleY(.82);  }
+    /* fast jitter */
+    52%  { transform: scaleY(1.13); }
+    54%  { transform: scaleY(.86);  }
+    57%  { transform: scaleY(1.09); }
+    59%  { transform: scaleY(.90);  }
+    62%  { transform: scaleY(1.17); }
+    64%  { transform: scaleY(.84);  }
+    66%  { transform: scaleY(1.06); }
+    /* held peak #3 (high) */
+    70%  { transform: scaleY(1.18); }
+    75%  { transform: scaleY(1.18); }
+    /* fast jitter */
+    77%  { transform: scaleY(.87);  }
+    79%  { transform: scaleY(1.11); }
+    81%  { transform: scaleY(.92);  }
+    83%  { transform: scaleY(1.15); }
+    85%  { transform: scaleY(.85);  }
+    87%  { transform: scaleY(1.08); }
+    89%  { transform: scaleY(.89);  }
+    91%  { transform: scaleY(1.13); }
+    93%  { transform: scaleY(.86);  }
+    95%  { transform: scaleY(1.10); }
+    97%  { transform: scaleY(.88);  }
     100% { transform: scaleY(1.00); }
   }
 
