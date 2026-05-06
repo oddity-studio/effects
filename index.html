@@ -85,12 +85,13 @@
      scale grows monotonically from .05 to 12. */
   @keyframes rise {
     0%   { transform: translate3d(0, 0, 0) scale(.05); }
-    18%  { transform: translate3d(calc(var(--dx, 0vw) *  1.2), -9vh,  0) scale(1.8); }
-    34%  { transform: translate3d(calc(var(--dx, 0vw) * -1.6), -18vh, 0) scale(3.6); }
-    52%  { transform: translate3d(calc(var(--dx, 0vw) *  2.4), -27vh, 0) scale(5.8); }
-    70%  { transform: translate3d(calc(var(--dx, 0vw) * -2.6), -36vh, 0) scale(8.2); }
-    86%  { transform: translate3d(calc(var(--dx, 0vw) *  3.2), -44vh, 0) scale(10.5); }
-    100% { transform: translate3d(calc(var(--dx, 0vw) * -3.5), -50vh, 0) scale(12); }
+    14%  { transform: translate3d(calc(var(--dx, 0vw) *  .4), -7vh,  0) scale(1.5); }
+    28%  { transform: translate3d(calc(var(--dx, 0vw) * -.5), -14vh, 0) scale(3.0); }
+    42%  { transform: translate3d(calc(var(--dx, 0vw) *  .6), -21vh, 0) scale(4.8); }
+    57%  { transform: translate3d(calc(var(--dx, 0vw) * -.7), -29vh, 0) scale(6.8); }
+    72%  { transform: translate3d(calc(var(--dx, 0vw) *  .8), -36vh, 0) scale(8.8); }
+    87%  { transform: translate3d(calc(var(--dx, 0vw) * -.9), -43vh, 0) scale(10.6); }
+    100% { transform: translate3d(calc(var(--dx, 0vw) *  1.0), -50vh, 0) scale(12); }
   }
 
   @media (prefers-reduced-motion: reduce) {
