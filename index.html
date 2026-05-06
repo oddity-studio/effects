@@ -36,21 +36,33 @@
     );
     transform-origin: 50% 100%;
     will-change: transform;
-    animation: bob 7.3s ease-in-out infinite;
+    animation: bob 2.9s linear infinite;
   }
 
-  /* irregular keyframe stops give a pseudo-random bob within +/- 20%. */
+  /* dense, irregular stops + non-prime spacing to look chaotic. +/- 20%. */
   @keyframes bob {
-    0%   { transform: scaleY(1); }
-    11%  { transform: scaleY(1.17); }
-    23%  { transform: scaleY(.86); }
-    34%  { transform: scaleY(1.09); }
-    45%  { transform: scaleY(.82); }
-    57%  { transform: scaleY(1.19); }
-    68%  { transform: scaleY(.91); }
-    79%  { transform: scaleY(1.13); }
-    89%  { transform: scaleY(.84); }
-    100% { transform: scaleY(1); }
+    0%   { transform: scaleY(1.00); }
+    4%   { transform: scaleY(1.14); }
+    9%   { transform: scaleY(.87); }
+    13%  { transform: scaleY(1.18); }
+    19%  { transform: scaleY(.83); }
+    24%  { transform: scaleY(1.05); }
+    29%  { transform: scaleY(.91); }
+    33%  { transform: scaleY(1.19); }
+    38%  { transform: scaleY(.84); }
+    43%  { transform: scaleY(1.12); }
+    48%  { transform: scaleY(.88); }
+    53%  { transform: scaleY(1.17); }
+    58%  { transform: scaleY(.82); }
+    63%  { transform: scaleY(1.07); }
+    68%  { transform: scaleY(.93); }
+    73%  { transform: scaleY(1.16); }
+    78%  { transform: scaleY(.85); }
+    83%  { transform: scaleY(1.10); }
+    88%  { transform: scaleY(.89); }
+    93%  { transform: scaleY(1.13); }
+    97%  { transform: scaleY(.86); }
+    100% { transform: scaleY(1.00); }
   }
 
   .bubble {
