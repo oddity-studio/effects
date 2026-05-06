@@ -84,21 +84,15 @@
     position: absolute;
     bottom: -10vh;
     left: var(--x, 50%);
-    /* render each bubble in a box larger than its visible "core" so the
-       soft falloff has room to spread in pixels even when the bubble is
-       small. visible size still tracks --size; the extra box is just
-       transparent halo. */
-    width: calc(var(--size, 10px) * 2);
-    height: calc(var(--size, 10px) * 2);
-    margin-left: calc(var(--size, 10px) * -1);
+    width: var(--size, 10px);
+    height: var(--size, 10px);
+    margin-left: calc(var(--size, 10px) / -2);
     border-radius: 50%;
     background: radial-gradient(
       circle,
-      rgba(0,0,0,.96) 0%,
-      rgba(0,0,0,.85) 12%,
-      rgba(0,0,0,.45) 30%,
-      rgba(0,0,0,.15) 50%,
-      rgba(0,0,0,0)   75%
+      #000 38%,
+      rgba(0,0,0,.55) 60%,
+      rgba(0,0,0,0) 78%
     );
     will-change: transform;
     animation: rise calc(var(--dur, 4s) / 2.4) linear infinite;
@@ -110,14 +104,15 @@
      magnitude through the keyframes so trajectories aren't straight lines.
      scale grows monotonically from .05 to 12. */
   @keyframes rise {
-    0%   { transform: translate3d(0, 0, 0) scale(.2); }
-    14%  { transform: translate3d(calc(var(--dx, 0vw) *  .20), -7vh,  0) scale(1.5); }
-    28%  { transform: translate3d(calc(var(--dx, 0vw) * -.25), -14vh, 0) scale(3.0); }
-    42%  { transform: translate3d(calc(var(--dx, 0vw) *  .30), -21vh, 0) scale(4.8); }
-    57%  { transform: translate3d(calc(var(--dx, 0vw) * -.35), -29vh, 0) scale(6.8); }
-    72%  { transform: translate3d(calc(var(--dx, 0vw) *  .40), -36vh, 0) scale(8.8); }
+    0%   { transform: translate3d(0, 0, 0) scale(.2);                                              opacity: .5; }
+    14%  { transform: translate3d(calc(var(--dx, 0vw) *  .20), -7vh,  0) scale(1.5);  }
+    28%  { transform: translate3d(calc(var(--dx, 0vw) * -.25), -14vh, 0) scale(3.0);  }
+    42%  { transform: translate3d(calc(var(--dx, 0vw) *  .30), -21vh, 0) scale(4.8);  }
+    50%  { opacity: 1; }
+    57%  { transform: translate3d(calc(var(--dx, 0vw) * -.35), -29vh, 0) scale(6.8);  }
+    72%  { transform: translate3d(calc(var(--dx, 0vw) *  .40), -36vh, 0) scale(8.8);  }
     87%  { transform: translate3d(calc(var(--dx, 0vw) * -.45), -43vh, 0) scale(10.6); }
-    100% { transform: translate3d(calc(var(--dx, 0vw) *  .50), -50vh, 0) scale(12); }
+    100% { transform: translate3d(calc(var(--dx, 0vw) *  .50), -50vh, 0) scale(12);                 opacity: 1; }
   }
 
   @media (prefers-reduced-motion: reduce) {
