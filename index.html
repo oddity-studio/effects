@@ -72,15 +72,14 @@
     100% { transform: scaleY(1.00); }
   }
 
-  /* one blur pass on the whole layer is much cheaper than blurring each
-     of the 225 particles individually. */
   .bubbles {
     position: absolute;
     inset: 0;
-    filter: blur(6px);
-    will-change: filter;
   }
 
+  /* soft-edged bubble drawn natively as a radial gradient: opaque black
+     core with a transparent halo. paints once per element, no filter or
+     blur pass per frame - far cheaper than filter: blur(). */
   .bubble {
     position: absolute;
     bottom: -10vh;
@@ -89,7 +88,12 @@
     height: var(--size, 10px);
     margin-left: calc(var(--size, 10px) / -2);
     border-radius: 50%;
-    background: #000;
+    background: radial-gradient(
+      circle,
+      #000 38%,
+      rgba(0,0,0,.55) 60%,
+      rgba(0,0,0,0) 78%
+    );
     will-change: transform;
     animation: rise calc(var(--dur, 4s) / 2.4) linear infinite;
     animation-delay: var(--delay, 0s);
