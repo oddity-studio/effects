@@ -20,6 +20,26 @@
     contain: strict;
   }
 
+  /* one static gradient layer multiplies onto the white particles, tinting
+     them by vertical position: white -> yellow -> red -> black (= invisible).
+     this means each particle only animates `transform`, never paints. */
+  .stage::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      to top,
+      #ffffff 0%,
+      #fff2a8 14%,
+      #ffb22a 28%,
+      #c43000 46%,
+      #3a0000 60%,
+      #000000 72%
+    );
+    mix-blend-mode: multiply;
+  }
+
   .bubble {
     position: absolute;
     bottom: -2vh;
@@ -29,44 +49,19 @@
     margin-left: calc(var(--size, 10px) / -2);
     border-radius: 50%;
     background: #fff;
-    opacity: 0;
-    will-change: transform, opacity, background-color;
+    will-change: transform;
     animation: rise var(--dur, 4s) linear infinite;
     animation-delay: var(--delay, 0s);
   }
 
-  /* white-hot at the bottom, cools to yellow, then dark red, then gone.
-     finishes around the second third of the screen (~66vh up). */
+  /* GPU-only: just transform. no color, no opacity, no paint per frame. */
   @keyframes rise {
-    0% {
-      transform: translate3d(0, 0, 0) scale(3.45);
-      background-color: #ffffff;
-      opacity: 0;
-    }
-    6%  { opacity: 1; }
-    12% {
-      transform: translate3d(calc(var(--dx, 0vw) * .1), -6vh, 0) scale(2.6);
-      background-color: #fff5b0;
-    }
-    30% {
-      transform: translate3d(calc(var(--dx, 0vw) * .3), -20vh, 0) scale(1.6);
-      background-color: #ffc23a;
-      opacity: .95;
-    }
-    60% {
-      transform: translate3d(calc(var(--dx, 0vw) * .65), -40vh, 0) scale(.7);
-      background-color: #8a1400;
-      opacity: .6;
-    }
-    100% {
-      transform: translate3d(var(--dx, 0vw), -68vh, 0) scale(.1);
-      background-color: #2a0000;
-      opacity: 0;
-    }
+    from { transform: translate3d(0, 0, 0) scale(3.45); }
+    to   { transform: translate3d(var(--dx, 0vw), -75vh, 0) scale(.1); }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .bubble { animation: none; opacity: 0; }
+    .bubble { animation: none; visibility: hidden; }
   }
 </style>
 </head>
