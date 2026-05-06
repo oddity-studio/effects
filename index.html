@@ -39,27 +39,27 @@
      finishes around the second third of the screen (~66vh up). */
   @keyframes rise {
     0% {
-      transform: translate3d(0, 0, 0) scale(1.15);
+      transform: translate3d(0, 0, 0) scale(3.45);
       background-color: #ffffff;
       opacity: 0;
     }
-    8%  { opacity: 1; }
-    25% {
-      transform: translate3d(calc(var(--dx, 0vw) * .25), -16vh, 0) scale(1);
+    6%  { opacity: 1; }
+    12% {
+      transform: translate3d(calc(var(--dx, 0vw) * .1), -6vh, 0) scale(2.6);
       background-color: #fff5b0;
     }
-    50% {
-      transform: translate3d(calc(var(--dx, 0vw) * .55), -34vh, 0) scale(.6);
+    30% {
+      transform: translate3d(calc(var(--dx, 0vw) * .3), -20vh, 0) scale(1.6);
       background-color: #ffc23a;
       opacity: .95;
     }
-    78% {
-      transform: translate3d(calc(var(--dx, 0vw) * .85), -54vh, 0) scale(.3);
+    60% {
+      transform: translate3d(calc(var(--dx, 0vw) * .65), -40vh, 0) scale(.7);
       background-color: #8a1400;
-      opacity: .55;
+      opacity: .6;
     }
     100% {
-      transform: translate3d(var(--dx, 0vw), -68vh, 0) scale(.08);
+      transform: translate3d(var(--dx, 0vw), -68vh, 0) scale(.1);
       background-color: #2a0000;
       opacity: 0;
     }
