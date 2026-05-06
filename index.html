@@ -84,15 +84,21 @@
     position: absolute;
     bottom: -10vh;
     left: var(--x, 50%);
-    width: var(--size, 10px);
-    height: var(--size, 10px);
-    margin-left: calc(var(--size, 10px) / -2);
+    /* render each bubble in a box larger than its visible "core" so the
+       soft falloff has room to spread in pixels even when the bubble is
+       small. visible size still tracks --size; the extra box is just
+       transparent halo. */
+    width: calc(var(--size, 10px) * 2);
+    height: calc(var(--size, 10px) * 2);
+    margin-left: calc(var(--size, 10px) * -1);
     border-radius: 50%;
     background: radial-gradient(
       circle,
-      #000 38%,
-      rgba(0,0,0,.55) 60%,
-      rgba(0,0,0,0) 78%
+      rgba(0,0,0,.96) 0%,
+      rgba(0,0,0,.85) 12%,
+      rgba(0,0,0,.45) 30%,
+      rgba(0,0,0,.15) 50%,
+      rgba(0,0,0,0)   75%
     );
     will-change: transform;
     animation: rise calc(var(--dur, 4s) / 2.4) linear infinite;
